@@ -1,0 +1,24 @@
+mav_fist=pd.DataFrame(columns=['ch1','ch2','ch3','ch4'],index=[np.arange(20)])
+for i in range(1,21):
+    mav_fist.loc[i-1,'ch1']=names['data1_cut%s'%i].ch1.mean()
+    mav_fist.loc[i-1,'ch2']=names['data1_cut%s'%i].ch2.mean()
+    mav_fist.loc[i-1,'ch3']=names['data1_cut%s'%i].ch3.mean()
+    mav_fist.loc[i-1,'ch4']=names['data1_cut%s'%i].ch4.mean()
+mav_open=pd.DataFrame(columns=['ch1','ch2','ch3','ch4'],index=[np.arange(21)])
+for i in range(1,22):
+    mav_open.loc[i-1,'ch1']=names['data2_cut%s'%i].ch1.mean()
+    mav_open.loc[i-1,'ch2']=names['data2_cut%s'%i].ch2.mean()
+    mav_open.loc[i-1,'ch3']=names['data2_cut%s'%i].ch3.mean()
+    mav_open.loc[i-1,'ch4']=names['data2_cut%s'%i].ch4.mean()
+mav_toright=pd.DataFrame(columns=['ch1','ch2','ch3','ch4'],index=[np.arange(24)])
+for i in range(1,25):
+    mav_toright.loc[i-1,'ch1']=names['data3_cut%s'%i].ch1.mean()
+    mav_toright.loc[i-1,'ch2']=names['data3_cut%s'%i].ch2.mean()
+    mav_toright.loc[i-1,'ch3']=names['data3_cut%s'%i].ch3.mean()
+    mav_toright.loc[i-1,'ch4']=names['data3_cut%s'%i].ch4.mean()
+mav_toleft=pd.DataFrame(columns=['ch1','ch2','ch3','ch4'],index=[np.arange(20)])
+for i in range(1,21):
+    mav_toleft.loc[i-1,'ch1']=names['data4_cut%s'%i].ch1.mean()
+    mav_toleft.loc[i-1,'ch2']=names['data4_cut%s'%i].ch2.mean()
+    mav_toleft.loc[i-1,'ch3']=names['data4_cut%s'%i].ch3.mean()
+    mav_toleft.loc[i-1,'ch4']=names['data4_cut%s'%i].ch4.mean()
