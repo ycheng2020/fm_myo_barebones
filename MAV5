@@ -1,0 +1,27 @@
+mav_fist['action']=0
+mav_open['action']=1
+mav_toright['action']=2
+mav_toleft['action']=3
+sumup=mav_fist.append([mav_open,mav_toright,mav_toleft],ignore_index=True)
+y=sumup.action
+
+x=sumup.drop(['action'],axis=1)
+from sklearn.model_selection import train_test_split
+
+import xgboost as xgb
+train_x,test_x,train_y,test_y=train_test_split(x.as_matrix(),y.as_matrix(),test_size=0.2)
+xg_train=xgb.DMatrix(train_x,label=train_y)
+xg_test=xgb.DMatrix(test_x,label=test_y)
+param = {}
+
+param['objective'] ='multi:softmax'
+
+param['eta']=0.1
+param['max_depth']=6
+param['silent']=1
+param['nthread']=4
+param['num_class']=4
+watchlist = [(xg_train, 'train'), (xg_test, 'test')]
+num_round=5
+bst = xgb.train(param, xg_train, num_round, watchlist)
+pred = bst.predict(xg_test)
