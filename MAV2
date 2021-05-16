@@ -1,0 +1,41 @@
+for i in range(1,5):
+    names['period_%s'%i]=[]
+    names['sta_filt_%s'%i]=[]
+    names['end_filt_%s'%i]=[]
+    for j in range(len(names['sta_%s'%i])):
+        names['period_%s'%i].append(names['end_%s'%i][j]-names['sta_%s'%i][j])
+    for k in range(len(names['period_%s'%i])):
+        if names['period_%s'%i][k]>5000:
+            names['sta_filt_%s'%i].append(names['sta_%s'%i][k])
+            names['end_filt_%s'%i].append(names['end_%s'%i][k])
+for i in range(1,len(sta_filt_1)+1):
+    names['data1_cut%s'%i]=data1[sta_filt_1[i-1]:end_filt_1[i-1]]
+for i in range(1,len(sta_filt_2)+1):
+    names['data2_cut%s'%i]=data2[sta_filt_2[i-1]:end_filt_2[i-1]]
+for i in range(1,len(sta_filt_3)+1):
+    names['data3_cut%s'%i]=data3[sta_filt_3[i-1]:end_filt_3[i-1]]
+for i in range(1,len(sta_filt_4)+1):
+    names['data4_cut%s'%i]=data4[sta_filt_4[i-1]:end_filt_4[i-1]]
+    
+   
+
+plt.figure(figsize=(50,3))
+for i in range(1,21):
+    plt.subplot2grid((1,20),(0,i-1),colspan=1).plot(names['data1_cut%s'%i])
+    plt.ylim(0,10)
+    plt.title('fist')
+plt.figure(figsize=(50,3))
+for i in range(1,22):
+    plt.subplot2grid((1,21),(0,i-1),colspan=1).plot(names['data2_cut%s'%i])
+    plt.ylim(0,10)
+    plt.title('open')
+plt.figure(figsize=(50,3))
+for i in range(1,25):
+    plt.subplot2grid((1,24),(0,i-1),colspan=1).plot(names['data3_cut%s'%i])
+    plt.ylim(0,10)
+    plt.title('toright')
+plt.figure(figsize=(50,3))
+for i in range(1,21):
+    plt.subplot2grid((1,20),(0,i-1),colspan=1).plot(names['data4_cut%s'%i])
+    plt.ylim(0,10)
+    plt.title('toleft')
