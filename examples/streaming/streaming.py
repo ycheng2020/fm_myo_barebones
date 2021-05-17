@@ -1,7 +1,6 @@
 import myo
 import numpy as np
 import time
-import keyboard
 
 from myo_ecn.listeners                   import ConnectionChecker
 from myo_ecn.listeners                   import Buffer
